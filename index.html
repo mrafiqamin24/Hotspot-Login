@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="icon" href="favicon.ico" />
+    <title>Home.Net - Login</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap-icons.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/app.js" defer></script>
+  </head>
+  <body>
+    <div class="page center">
+      <div class="card card-sm">
+        <div class="card-pad">
+          <div class="topbar">
+            <div class="brand">
+              <div class="logo-space logo-filled" aria-label="Logo Home.Net"><img src="img/logo.png" alt="Home.Net" /></div>
+              <div>
+                <h1>Home.Net</h1>
+                <p>Voucher WiFi Premium</p>
+              </div>
+            </div>
+
+            <button class="theme-toggle" onclick="toggleTheme()" data-no-loader>
+              <i id="themeIcon" class="bi bi-moon-stars"></i>
+            </button>
+          </div>
+
+          <div class="marquee">
+            <span
+              >Selamat datang di Home.Net • Masukkan kode voucher • Internet
+              cepat, aman, dan stabil</span
+            >
+          </div>
+          <div id="loginNotice" class="toast toast-auto" hidden>
+            <i class="bi bi-info-circle"></i>
+            <span>Kode voucher wajib diisi.</span>
+          </div>
+
+          <form
+            class="form"
+            name="login"
+            data-login-form
+            action="status.html" method="get" onsubmit="window.location.href='status.html'; return false;">
+            <input type="hidden" name="dst" value="status.html" />
+            <input type="hidden" name="popup" value="true" />
+
+            <div class="input-wrap">
+              <i class="bi bi-ticket-perforated"></i>
+              <input
+                name="username"
+                type="text"
+                value=""
+                placeholder="Kode Voucher"
+                autocomplete="off"
+                required
+              />
+            </div>
+
+            <input name="password" type="hidden" />
+
+            <button class="btn" type="submit">
+              <i class="bi bi-box-arrow-in-right"></i>
+              <span>Masuk</span>
+            </button>
+          </form>
+
+          <div class="actions" style="margin-top: 12px">
+            <a class="btn secondary" href="help.html">
+              <i class="bi bi-question-circle"></i>
+              <span>Bantuan?</span>
+            </a>
+            <a class="btn secondary" href="scanqr.html">
+              <i class="bi bi-qr-code-scan"></i>
+              <span>Scan QR</span>
+            </a>
+          </div>
+
+          <div class="footer">
+            © 2026 Home.Net Powered by MikroTik |
+            <a
+              href="https://portfolio.ownertech.id/"
+              target="_blank"
+              rel="noopener"
+              >Muhammad Rafiq Amin</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="loader" class="loader">
+      <div>
+        <div class="ring"></div>
+        <div id="loaderPercent" class="percent">0%</div>
+        <p class="muted loader-text">Menghubungkan Home.Net...</p>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+
+

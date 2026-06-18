@@ -1,0 +1,97 @@
+<html>
+  <head>
+    <link rel="icon" href="favicon.ico" />
+    <title>Home.Net - Error</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap-icons.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/app.js" defer></script>
+  </head>
+  <body class="error-body">
+    <div class="error-noise"></div>
+    <div class="error-scanline"></div>
+
+    <div class="page center">
+      <div class="card card-md error-card glitch-all">
+        <div class="card-pad">
+          <div class="warnicon glitch-item">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+          </div>
+
+          <h1 class="error-msg glitch-item">Terjadi Error Hotspot</h1>
+          <p class="error-code glitch-item">Kode voucher salah atau sudah tidak berlaku.</p>
+
+          <div class="error-grid">
+            <div class="error-mini glitch-item">
+              <i class="bi bi-bug-fill"></i>
+              <span>Sistem menolak akses</span>
+            </div>
+            <div class="error-mini glitch-item">
+              <i class="bi bi-shield-exclamation"></i>
+              <span>Periksa voucher / koneksi</span>
+            </div>
+          </div>
+
+          <div class="actions error-actions">
+            <a class="btn secondary" href="login.html">
+              <i class="bi bi-arrow-left-circle"></i>
+              <span>Kembali</span>
+            </a>
+            <a
+              class="btn secondary social-wa error-wa"
+              href="https://wa.me/6282152400352?text=Bang%20hotspot%20error:%20Kode voucher salah atau sudah tidak berlaku."
+            >
+              <i class="bi bi-whatsapp"></i>
+              <span>WhatsApp</span>
+            </a>
+          </div>
+
+          <div class="footer glitch-item">
+            © 2026 Home.Net Powered by MikroTik |
+            <a
+              href="https://portfolio.ownertech.id/"
+              target="_blank"
+              rel="noopener"
+              >Muhammad Rafiq Amin</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Back sound error: bunyi cyber error.
+      // Beberapa browser memblokir autoplay, jadi suara juga dipancing saat user klik layar.
+      function playErrorSound() {
+        try {
+          var AudioContext = window.AudioContext || window.webkitAudioContext;
+          var audio = new AudioContext();
+          var gain = audio.createGain();
+          gain.gain.value = 0.22;
+          gain.connect(audio.destination);
+
+          [180, 92, 240, 60].forEach(function (freq, index) {
+            var osc = audio.createOscillator();
+            osc.type = index % 2 ? "square" : "sawtooth";
+            osc.frequency.value = freq;
+            osc.connect(gain);
+            osc.start(audio.currentTime + index * 0.09);
+            osc.stop(audio.currentTime + index * 0.09 + 0.18);
+          });
+        } catch (e) {}
+      }
+
+      window.addEventListener("load", function () {
+        playErrorSound();
+        document.addEventListener("pointerdown", playErrorSound, {
+          once: true,
+        });
+      });
+    </script>
+  </body>
+</html>
+
+

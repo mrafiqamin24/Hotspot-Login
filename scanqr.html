@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="icon" href="favicon.ico" />
+    <title>Home.Net - Scan QR</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap-icons.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/app.js" defer></script>
+    <script src="js/jsqr.min.js"></script>
+  </head>
+  <body>
+    <div class="page center">
+      <div class="card card-md">
+        <div class="card-head">
+          <div class="iconbox">
+            <i class="bi bi-qr-code-scan"></i>
+          </div>
+          <div>
+            <h2>Scan QR Voucher</h2>
+            <p class="muted">Upload gambar QR voucher Home.Net</p>
+          </div>
+        </div>
+
+        <div class="card-pad">
+          <div id="scanMsg" class="toast" style="display: none"></div>
+
+          <form
+            class="form"
+            name="qrlogin"
+            action="status.html"
+            method="post"
+          >
+            <input type="hidden" name="dst" value="status.html" />
+            <input type="hidden" name="popup" value="true" />
+            <input type="hidden" name="username" />
+            <input type="hidden" name="password" />
+          </form>
+
+          <div class="scan-box">
+            <input
+              id="qrFile"
+              type="file"
+              accept="image/*"
+              style="padding: 14px; height: auto"
+            />
+            <canvas id="qrCanvas" style="display: none"></canvas>
+            <img id="qrPreview" class="preview" alt="Preview QR" />
+            <p class="muted">
+              Preview akan tampil setelah gambar dipilih. File
+              <b>js/jsqr.min.js</b> dipakai sebagai engine jsQR lokal.
+            </p>
+          </div>
+
+          <div class="actions" style="margin-top: 16px">
+            <button class="btn" onclick="readQR()" data-no-loader>
+              <i class="bi bi-cloud-upload"></i>
+              <span>Upload QR</span>
+            </button>
+
+            <button class="btn secondary" onclick="resetQR()" data-no-loader>
+              <i class="bi bi-arrow-clockwise"></i>
+              <span>Reset</span>
+            </button>
+
+            <a class="btn secondary" href="login.html">
+              <i class="bi bi-arrow-left-circle"></i>
+              <span>Kembali</span>
+            </a>
+          </div>
+
+          <div class="footer">
+            © 2026 Home.Net Powered by MikroTik |
+            <a
+              href="https://portfolio.ownertech.id/"
+              target="_blank"
+              rel="noopener"
+              >Muhammad Rafiq Amin</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="loader" class="loader">
+      <div>
+        <div class="ring"></div>
+        <div id="loaderPercent" class="percent">0%</div>
+        <p class="muted loader-text">Menghubungkan Home.Net...</p>
+      </div>
+    </div>
+
+    <script>
+      var lastImg = null;
+
+      document.getElementById("qrFile").onchange = function (event) {
+        var file = event.target.files[0];
+
+        if (!file) return;
+
+        var reader = new FileReader();
+
+        reader.onload = function () {
+          var image = document.getElementById("qrPreview");
+
+          image.src = reader.result;
+          image.style.display = "block";
+          lastImg = reader.result;
+        };
+
+        reader.readAsDataURL(file);
+      };
+
+      function msg(text) {
+        var message = document.getElementById("scanMsg");
+
+        message.style.display = "block";
+        message.textContent = text;
+      }
+
+      function resetQR() {
+        document.getElementById("qrFile").value = "";
+        document.getElementById("qrPreview").style.display = "none";
+        document.getElementById("scanMsg").style.display = "none";
+        lastImg = null;
+      }
+
+      function readQR() {
+        if (!lastImg) {
+          return msg("Pilih gambar QR dulu, bro.");
+        }
+
+        if (typeof jsQR === "undefined") {
+          return msg(
+            "Engine jsQR belum dipasang. Taruh file asli di js/jsqr.min.js",
+          );
+        }
+
+        var image = new Image();
+
+        image.onload = function () {
+          var canvas = document.getElementById("qrCanvas");
+          var context = canvas.getContext("2d");
+
+          canvas.width = image.width;
+          canvas.height = image.height;
+
+          context.drawImage(image, 0, 0);
+
+          var data = context.getImageData(0, 0, canvas.width, canvas.height);
+          var code = jsQR(data.data, canvas.width, canvas.height);
+
+          if (!code || !code.data) {
+            return msg("QR salah, rusak, atau tidak berlaku lagi.");
+          }
+
+          var voucher = code.data.trim();
+
+          if (!voucher || voucher.length < 3) {
+            return msg("QR tidak berlaku lagi.");
+          }
+
+          document.qrlogin.username.value = voucher;
+          document.qrlogin.password.value = voucher;
+
+          showLoader();
+          document.qrlogin.submit();
+        };
+
+        image.src = lastImg;
+      }
+    </script>
+  </body>
+</html>
+
+

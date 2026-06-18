@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="icon" href="favicon.ico" />
+    <title>Home.Net - Bantuan</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap-icons.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/app.js" defer></script>
+  </head>
+  <body>
+    <div class="page">
+      <div class="topbar">
+        <div class="brand">
+          <div class="logo-space logo-filled" aria-label="Logo Home.Net"><img src="img/logo.png" alt="Home.Net" /></div>
+          <div>
+            <h1>Bantuan Home.Net</h1>
+            <p>Panduan login, voucher, dan layanan</p>
+          </div>
+        </div>
+
+        <button class="theme-toggle" onclick="toggleTheme()" data-no-loader>
+          <i id="themeIcon" class="bi bi-moon-stars"></i>
+        </button>
+      </div>
+
+      <div class="grid">
+        <div class="card card-pad help-card">
+          <h2><i class="bi bi-shield-lock"></i> Cara Login Hotspot</h2>
+          <ul class="list">
+            <li>
+              <i class="bi bi-wifi"></i> Hubungkan perangkat ke WiFi
+              <b>Home.Net</b>
+            </li>
+            <li>
+              <i class="bi bi-window"></i> Buka browser jika halaman login belum
+              muncul
+            </li>
+            <li>
+              <i class="bi bi-ticket-perforated"></i> Masukkan
+              <b>Kode Voucher</b>, lalu tekan Masuk
+            </li>
+            <li>
+              <i class="bi bi-globe2"></i> Coba akses <b>http://1.1.1.1</b> jika
+              portal tidak terbuka
+            </li>
+          </ul>
+        </div>
+
+        <div class="card card-pad help-card">
+          <h2><i class="bi bi-ticket-detailed"></i> Mendapatkan Voucher</h2>
+          <ul class="list">
+            <li>
+              <i class="bi bi-shop"></i> Beli langsung di counter/kasir Home.Net
+            </li>
+            <li>
+              <i class="bi bi-whatsapp"></i> Pembelian online via WhatsApp Admin
+            </li>
+            <li>
+              <i class="bi bi-qr-code-scan"></i> QR voucher dikirim setelah
+              pembayaran
+            </li>
+          </ul>
+        </div>
+
+        <div class="card card-pad help-card">
+          <h2><i class="bi bi-tools"></i> Troubleshooting</h2>
+          <ul class="list">
+            <li>
+              <i class="bi bi-x-octagon"></i> Voucher tidak valid: cek kode dan
+              masa aktif
+            </li>
+            <li>
+              <i class="bi bi-speedometer2"></i> Koneksi lemot: cek sisa
+              kuota/masa aktif
+            </li>
+            <li>
+              <i class="bi bi-phone"></i> Login tidak muncul: matikan data
+              seluler dulu
+            </li>
+            <li>
+              <i class="bi bi-box-arrow-left"></i> Lupa logout: sistem auto
+              logout saat idle
+            </li>
+          </ul>
+        </div>
+
+        <div class="card card-pad help-card">
+          <h2><i class="bi bi-tags"></i> Paket Internet</h2>
+          <ul class="list">
+            <li><i class="bi bi-award"></i> Silver • 1 Jam • Rp 5.000</li>
+            <li><i class="bi bi-gem"></i> Gold • 1 Hari • Rp 15.000</li>
+            <li><i class="bi bi-stars"></i> Platinum • 1 Minggu • Rp 50.000</li>
+            <li>
+              <i class="bi bi-diamond"></i> Diamond • 1 Bulan • Rp 150.000
+            </li>
+          </ul>
+        </div>
+
+        <div class="card card-pad help-card">
+          <h2><i class="bi bi-patch-question"></i> FAQ</h2>
+          <ul class="list">
+            <li>
+              <i class="bi bi-person-check"></i>
+              <b>1 voucher banyak perangkat?</b><br />Setiap voucher hanya untuk
+              1 perangkat aktif.
+            </li>
+            <li>
+              <i class="bi bi-clock-history"></i> <b>Bisa cek sisa waktu?</b
+              ><br />Buka halaman status setelah login.
+            </li>
+            <li>
+              <i class="bi bi-broadcast-pin"></i> <b>Kecepatan dibatasi?</b
+              ><br />Standar 10 Mbps fair usage.
+            </li>
+          </ul>
+        </div>
+
+        <div class="card card-pad help-card">
+          <h2><i class="bi bi-headset"></i> Layanan Pelanggan</h2>
+          <ul class="list">
+            <li>
+              <i class="bi bi-envelope-fill"></i> Email:
+              rafiqamin085252@gmail.com
+            </li>
+            <li><i class="bi bi-whatsapp"></i> WhatsApp: 0821-5240-0352</li>
+            <li>
+              <i class="bi bi-geo-alt"></i> Counter: Jl.KH.M SAID, Tumbang Titi
+            </li>
+            <li><i class="bi bi-clock"></i> 08.00 - 22.00 WIB</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card card-pad contact-card" style="margin-top: 18px">
+        <div class="actions">
+          <a class="btn secondary social-back" href="login.html">
+            <i class="bi bi-arrow-left-circle"></i>
+            <span>Kembali</span>
+          </a>
+
+          <a class="btn secondary social-wa" href="https://wa.me/6282152400352">
+            <i class="bi bi-whatsapp"></i>
+            <span>WhatsApp</span>
+          </a>
+
+          <a class="btn secondary social-ig" href="#">
+            <i class="bi bi-instagram"></i>
+            <span>Instagram</span>
+          </a>
+
+          <a class="btn secondary social-gh" href="https://github.com/">
+            <i class="bi bi-github"></i>
+            <span>Github</span>
+          </a>
+
+          <a
+            class="btn secondary social-mail"
+            href="mailto:rafiqamin085252@gmail.com"
+          >
+            <i class="bi bi-envelope-fill"></i>
+            <span>Email</span>
+          </a>
+        </div>
+
+        <div class="footer">
+          © 2026 Home.Net Powered by MikroTik |
+          <a
+            href="https://portfolio.ownertech.id/"
+            target="_blank"
+            rel="noopener"
+            >Muhammad Rafiq Amin</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <div id="loader" class="loader">
+      <div>
+        <div class="ring"></div>
+        <div id="loaderPercent" class="percent">0%</div>
+        <p class="muted loader-text">Menghubungkan Home.Net...</p>
+      </div>
+    </div>
+  </body>
+</html>
+
+

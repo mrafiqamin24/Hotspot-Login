@@ -1,0 +1,173 @@
+<html>
+  <head>
+    <link rel="icon" href="favicon.ico" />
+    <title>Home.Net - Logout</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap-icons.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/app.js" defer></script>
+  </head>
+  <body class="logout-body">
+    <div class="status-badge">
+      <span class="blink yellow"></span>
+      Terputus
+    </div>
+
+    <div class="page center">
+      <div class="card card-md logout-card">
+        <div class="card-head">
+          <div class="logo-space logo-filled" aria-label="Logo Home.Net"><img src="img/logo.png" alt="Home.Net" /></div>
+          <div>
+            <h2>Logout Berhasil</h2>
+            <p class="muted">Koneksi Home.Net sudah diputus dengan aman.</p>
+          </div>
+        </div>
+
+        <div class="card-pad">
+          <div class="success-panel">
+            <i class="bi bi-shield-check"></i>
+            <div>
+              <strong>Sesi berhasil ditutup</strong>
+              <span>Terima kasih sudah memakai layanan Home.Net.</span>
+            </div>
+          </div>
+
+          <div class="price-row">
+            <span>Upload / Download</span>
+            <b>18.4 MiB / 245.8 MiB</b>
+          </div>
+
+          
+          <div class="price-row">
+            <span>Sisa waktu</span>
+            <b>1h 25m</b>
+          </div>
+          
+
+          <details>
+            <summary>
+              <i class="bi bi-tags"></i>
+              List Paket &amp; Harga
+            </summary>
+            <div class="details-body">
+              <div class="price-row">
+                <span
+                  ><i class="bi bi-ticket-perforated price-icon"></i>Paket 30
+                  Menit</span
+                ><b>Rp 3.000</b>
+              </div>
+              <div class="price-row">
+                <span
+                  ><i class="bi bi-ticket-perforated price-icon"></i>Paket 1
+                  Jam</span
+                ><b>Rp 5.000</b>
+              </div>
+              <div class="price-row">
+                <span
+                  ><i class="bi bi-ticket-perforated price-icon"></i>Paket 2
+                  Jam</span
+                ><b>Rp 8.000</b>
+              </div>
+              <div class="price-row">
+                <span
+                  ><i class="bi bi-ticket-perforated price-icon"></i>Paket 2 Jam
+                  30 Menit</span
+                ><b>Rp 12.000</b>
+              </div>
+              <div class="price-row">
+                <span
+                  ><i class="bi bi-ticket-perforated price-icon"></i>Paket 3
+                  Jam</span
+                ><b>Rp 15.000</b>
+              </div>
+              <div class="price-row">
+                <span
+                  ><i class="bi bi-ticket-perforated price-icon"></i>Paket 12
+                  Jam</span
+                ><b>Rp 20.000</b>
+              </div>
+              <div class="price-row">
+                <span
+                  ><i class="bi bi-ticket-perforated price-icon"></i>Paket 1
+                  Hari</span
+                ><b>Rp 30.000</b>
+              </div>
+              <div class="price-row">
+                <span
+                  ><i class="bi bi-ticket-perforated price-icon"></i>Paket 1
+                  Minggu</span
+                ><b>Rp 45.000</b>
+              </div>
+              <div class="price-row">
+                <span
+                  ><i class="bi bi-ticket-perforated price-icon"></i>Paket 1
+                  Bulan</span
+                ><b>Rp 60.000</b>
+              </div>
+            </div>
+          </details>
+
+          <div class="center-form">
+            <a class="btn btn-full" href="login.html">
+              <i class="bi bi-box-arrow-in-right"></i>
+              <span>Masuk Kembali</span>
+            </a>
+          </div>
+
+          <div class="footer">
+            © 2026 Home.Net Powered by MikroTik |
+            <a
+              href="https://portfolio.ownertech.id/"
+              target="_blank"
+              rel="noopener"
+              >Muhammad Rafiq Amin</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="loader" class="loader">
+      <div>
+        <div class="ring"></div>
+        <div id="loaderPercent" class="percent">0%</div>
+        <p class="muted loader-text">Menghubungkan Home.Net...</p>
+      </div>
+    </div>
+
+    <script>
+      // Back sound logout: suara berhasil keluar.
+      // Catatan: beberapa browser hanya mengizinkan suara setelah ada interaksi user.
+      function playLogoutSound() {
+        try {
+          var AudioContext = window.AudioContext || window.webkitAudioContext;
+          var audio = new AudioContext();
+          var gain = audio.createGain();
+          gain.gain.value = 0.16;
+          gain.connect(audio.destination);
+
+          [523.25, 659.25, 783.99].forEach(function (freq, index) {
+            var osc = audio.createOscillator();
+            osc.type = "sine";
+            osc.frequency.value = freq;
+            osc.connect(gain);
+            osc.start(audio.currentTime + index * 0.11);
+            osc.stop(audio.currentTime + index * 0.11 + 0.16);
+          });
+        } catch (e) {}
+      }
+
+      window.addEventListener("load", function () {
+        playLogoutSound();
+        document.addEventListener("pointerdown", playLogoutSound, {
+          once: true,
+        });
+      });
+    </script>
+  </body>
+</html>
+
+
